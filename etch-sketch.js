@@ -1,3 +1,6 @@
+makeGrid();
+inputNewSize();
+
 function makeGrid(size = 16){
     const gridContainer = document.getElementById('container');
     gridContainer.textContent = "";
@@ -28,4 +31,26 @@ function colorGrid(){
         });
 
     });
+}
+
+function inputNewSize(){
+
+    const newGrid = document.getElementById('new-grid');
+
+    newGrid.addEventListener('click', () => {
+
+        let newSize = window.prompt("Please input a number 1 - 100:");
+
+        while((newSize <= 0 || newSize > 100)|| isNaN(newSize)){
+
+            newSize = window.prompt("Error, please input a number 1 - 100:");
+
+        }
+
+        newSize = Math.round(Number(newSize));
+
+        makeGrid(newSize);
+
+    });
+
 }
