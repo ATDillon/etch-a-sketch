@@ -5,8 +5,27 @@ function makeGrid(size = 16){
 
     for(i = 0; i < (size*size); i++){
         const gridDiv = document.createElement('div')
+        gridDiv.classList = 'grid';
         gridDiv.style.boxSizing = 'border-box';
         gridDiv.style.border = '1px solid black';
         gridContainer.appendChild(gridDiv);
     }
+
+    colorGrid();
+
+}
+
+function colorGrid(){
+    const gridSquares = document.querySelectorAll('.grid');
+    console.log(gridSquares);
+
+    gridSquares.forEach((div) => {
+
+        div.addEventListener('mouseover', () => {
+            
+            div.style.backgroundColor = 'red';
+
+        });
+
+    });
 }
