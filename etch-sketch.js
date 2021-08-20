@@ -9,8 +9,10 @@ function makeGrid(size = 16){
     for(i = 0; i < (size*size); i++){
         const gridDiv = document.createElement('div')
         gridDiv.classList = 'grid';
+        gridDiv.style.backgroundColor = 'white';
         gridDiv.style.boxSizing = 'border-box';
         gridDiv.style.border = '1px solid black';
+
         gridContainer.appendChild(gridDiv);
     }
 
@@ -23,11 +25,23 @@ function colorGrid(){
     console.log(gridSquares);
 
     gridSquares.forEach((div) => {
+        let light = 100;
 
         div.addEventListener('mouseover', () => {
-            
-            div.style.backgroundColor = 'red';
 
+            div.style.backgroundColor = getRandomColor();
+
+        }, {once: true});
+
+        div.addEventListener('mouseover', function removeOpacity(){
+
+            div.style.opacity = `${light}%`
+            light -= 10;
+            if(light === -10){
+
+                div.removeEventListener('mouseover', removeOpacity);
+
+            }
         });
 
     });
@@ -53,4 +67,13 @@ function inputNewSize(){
 
     });
 
+}
+
+function getRandomColor(){
+    let r = Math.floor((Math.random() * 256)),
+    b = Math.floor((Math.random() * 256)),
+    g = Math.floor((Math.random() * 256)),
+    color = `rgb(${r}, ${g}, ${b})`;
+
+    return color;
 }
