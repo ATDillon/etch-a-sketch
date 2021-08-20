@@ -2,17 +2,13 @@ makeGrid();
 inputNewSize();
 
 function makeGrid(size = 16){
+
     const gridContainer = document.getElementById('container');
     gridContainer.textContent = "";
     gridContainer.style.cssText = `grid-template-rows: repeat(${size}, 1fr); grid-template-columns: repeat(${size}, 1fr);`;
 
     for(i = 0; i < (size*size); i++){
-        const gridDiv = document.createElement('div')
-        gridDiv.classList = 'grid';
-        gridDiv.style.backgroundColor = 'white';
-        gridDiv.style.boxSizing = 'border-box';
-        gridDiv.style.border = '1px solid black';
-
+        const gridDiv = makeGridSquare();
         gridContainer.appendChild(gridDiv);
     }
 
@@ -20,11 +16,15 @@ function makeGrid(size = 16){
 
 }
 
+/*Goes through the first event listener one time only for each div, then adds a new one to adjust opacity after the color is set.*/
+
 function colorGrid(){
+
     const gridSquares = document.querySelectorAll('.grid');
     console.log(gridSquares);
 
     gridSquares.forEach((div) => {
+        
         let light = 100;
 
         div.addEventListener('mouseover', () => {
@@ -76,4 +76,15 @@ function getRandomColor(){
     color = `rgb(${r}, ${g}, ${b})`;
 
     return color;
+}
+
+function makeGridSquare(){
+    const gridDiv = document.createElement('div')
+
+    gridDiv.classList = 'grid';
+    gridDiv.style.backgroundColor = 'white';
+    gridDiv.style.boxSizing = 'border-box';
+    gridDiv.style.border = '1px solid black';
+
+    return gridDiv;
 }
