@@ -1,6 +1,40 @@
+html, body, main{
+    width: 100vw;
+    height: 100vh;
+}
+
+main{
+    display: flex;
+    flex-flow: nowrap column;
+    justify-content: center;
+    align-items: center;
+    background-color: aliceblue;
+}
+
 #container{
     display: grid;
-    width: 500px;
-    height: 500px;
+    width: 75vw;
+    height: 75vw;
     background-color: black;
+    border: 10px double lightsteelblue;
+    margin-bottom: 10vh;
+}
+
+button{
+    font-family: sans-serif;
+    width: 100px;
+    height: 25px;
+    background-color: white;
+    border: 3px double black;
+    margin-bottom: 5vh;
+}
+
+@media (min-width: 1000px){
+
+    #container{
+        width: 800px;
+        height: 800px;
+        margin-bottom: 5vh;
+    }
+
 }
